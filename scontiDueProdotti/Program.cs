@@ -1,4 +1,5 @@
 ﻿using System;
+using controllo;
 
 namespace scontiDueProdotti
 {
@@ -14,19 +15,9 @@ namespace scontiDueProdotti
             importo_primo_prodotto = double.Parse(Console.ReadLine());
             Console.WriteLine("Inserisci l'importo del secondo prodotto: ");
             importo_secondo_prodotto = double.Parse(Console.ReadLine());
-            if(importo_primo_prodotto<importo_secondo_prodotto)
-            {
-                sconto = (importo_primo_prodotto / 100) * 50;
-                importo_primo_prodotto = importo_primo_prodotto - sconto;
-                importo_totale = importo_secondo_prodotto + importo_primo_prodotto;
-                Console.WriteLine("Il costo dell'importo totale è: " + importo_totale);
-            }else if (importo_primo_prodotto > importo_secondo_prodotto)
-            {
-                sconto = (importo_secondo_prodotto / 100) * 50;
-                importo_secondo_prodotto = importo_secondo_prodotto - sconto;
-                importo_totale = importo_secondo_prodotto + importo_primo_prodotto;
-                Console.WriteLine("L'importo totale è: " + importo_totale);
-            }Console.ReadLine();
+            importo_totale = Sconto.CalcolaSconto(importo_primo_prodotto, importo_secondo_prodotto);
+            Console.WriteLine($"{importo_totale}");
+            Console.ReadLine();
         }
     }
 }
